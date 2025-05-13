@@ -20,12 +20,7 @@ vector_store = Chroma(
     persist_directory="./chroma_langchain_db",  # Path where embeddings are saved
 )
 
-# Example documents to embed and store
-# documents = [
-#     "This is a test document.",
-#     "LangChain is an amazing library for NLP tasks.",
-#     "Embedding vectors and performing retrieval with Chroma is powerful."
-# ]
+
 def embedding_store():
     with open('fetched_articles.json', 'r') as file:
         fetched_data = json.load(file)
@@ -47,16 +42,3 @@ def embedding_store():
     # Add embeddings to the Chroma vector store
     vector_store.add_texts(documents, embeddings=doc_result)
     print("Vector base updated")
-# Query text
-# query_text = "North of India plunged"
-
-# # Embed query text
-# query_result = text_embeddings.embed_query(query_text)
-
-# # Retrieve the top-k similar documents
-# top_k = 3  # Number of similar documents to retrieve
-# retrieved_docs = vector_store.similarity_search(query_text, k=top_k)
-
-# # Print out the retrieved documents
-# for doc in retrieved_docs:
-#     print(doc.page_content)
